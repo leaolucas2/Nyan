@@ -1,0 +1,61 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
+public class Mouse extends Actor
+{
+    /**
+     * Act - do whatever the Crab wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    public void act() 
+    {
+        
+        moveAndTurn();
+        
+        Actor cheese;
+        cheese = getOneObjectAtOffset(0,0, Cheese.class);
+        
+        Actor raimbow;
+        raimbow = getOneObjectAtOffset(0,10, Raimbow.class);
+        if (cheese != null)
+        {
+            Greenfoot.playSound("eating.wav");
+            MouseWorld world=(MouseWorld)getWorld();
+            world.novoCheese();
+            world.removeObject(cheese);                             
+        }
+        
+        if (raimbow != null)
+        {
+            
+            turn(90);                         
+        }
+    }    
+    
+       
+       
+       
+   
+       
+    public void moveAndTurn(){
+         if(Greenfoot.isKeyDown("up"))
+        {
+           move(3);
+        }
+        if(Greenfoot.isKeyDown("down"))
+        {
+          Greenfoot.playSound("eating.wav");
+        }
+        if(Greenfoot.isKeyDown("left"))
+        {
+           turn(-3);
+        }
+        if(Greenfoot.isKeyDown("right"))
+        {
+           turn(3);
+        }
+    }
+    
+      
+   
+           
+}
